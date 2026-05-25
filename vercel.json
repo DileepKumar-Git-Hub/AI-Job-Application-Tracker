@@ -1,18 +1,23 @@
-{
+﻿{
   "version": 2,
+  "public": "frontend/my-react-app/dist",
   "builds": [
     {
       "src": "frontend/my-react-app/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "frontend/my-react-app/dist"
+        "distDir": "dist"
       }
     }
   ],
   "routes": [
     {
+      "src": "/assets/(.*)",
+      "dest": "/assets/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "/frontend/my-react-app/dist/$1"
+      "dest": "/index.html"
     }
   ]
 }
