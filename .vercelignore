@@ -1,0 +1,13 @@
+# Ignore backend and non-deployed files
+backend/
+backend/**
+!frontend/
+frontend/my-react-app/node_modules/
+frontend/node_modules/
+**/__pycache__/
+**/*.pyc
+backend/job_tracker/db.sqlite3
+backend/job_tracker/.env
+.DS_Store
+.vscode/
+*.log

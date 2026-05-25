@@ -1,0 +1,23 @@
+# Node dependencies
+node_modules/
+frontend/my-react-app/node_modules/
+frontend/node_modules/
+
+# Python artifacts
+**/__pycache__/
+**/*.pyc
+
+# Local environment and data
+backend/job_tracker/.env
+backend/job_tracker/db.sqlite3
+backend/media/
+backend/job_tracker/media/
+
+# Vercel and build output
+.vercel/
+dist/
+
+# Editor metadata
+.vscode/
+.DS_Store
+*.log
