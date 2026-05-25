@@ -27,6 +27,11 @@ const featureCards = [
     title: 'ATS Score Checker',
     subtitle: 'Evaluate your resume against a job description for ATS fit.',
   },
+  {
+    id: 'career',
+    title: 'Career Guide',
+    subtitle: 'Receive structured career advice for goals, growth, and next steps.',
+  },
 ];
 
 const AiFeatures = () => {
@@ -117,6 +122,14 @@ const AiFeatures = () => {
     return `Interview Prep for ${targetRole}:\n\n1. Tell me about yourself and your experience in ${experience || 'this field'}.\n2. How have you used ${skills || 'your key skills'} to solve a challenge?\n3. Why are you interested in this role and company?\n\nPractice answering these questions with concrete examples and measurable results.`;
   };
 
+  const careerGuide = ({ targetRole, experience, skills, resumeText }) => {
+    if (!targetRole.trim() && !skills.trim() && !resumeText.trim()) {
+      return 'Tell me your target role, main skills, or a short resume summary so I can provide a career guide.';
+    }
+
+    return `Career Guide:\n\n• Target role: ${targetRole.trim() || 'A role that fits your strongest skills.'}\n• Experience: ${experience.trim() || 'Highlight roles with measurable results.'}\n• Key skills: ${skills.trim() || 'Focus on strengths such as communication, leadership, and technical delivery.'}\n\nAction Plan:\n1. Tailor your resume to one target role and include metrics for each achievement.\n2. Practice one story for leadership, one for impact, and one for innovation.\n3. Apply to 3-5 prioritized roles each week and follow up within 48 hours.\n4. Build a short networking message for hiring managers and alumni.`;
+  };
+
   const matchJobs = ({ skills }) => {
     if (!skills.trim()) {
       return 'Enter your top skills so the system can suggest matching job types.';
@@ -165,6 +178,9 @@ const AiFeatures = () => {
       case 'ats':
         output = checkAtsScore(formState);
         break;
+      case 'career':
+        output = careerGuide(formState);
+        break;
       default:
         output = 'Select a feature to begin.';
     }
@@ -181,18 +197,17 @@ const AiFeatures = () => {
           {resumeMessage && <div className="alert alert-info py-2">{resumeMessage}</div>}
         </div>
 
-        <div className="row gx-3 gy-3 mb-4">
+        <div className="ai-feature-topbar mb-4">
           {featureCards.map((feature) => (
-            <div className="col-lg-4" key={feature.id}>
-              <button
-                type="button"
-                className={`card h-100 text-start p-3 border ${activeFeature === feature.id ? 'border-primary shadow-sm' : 'border-secondary'}`}
-                onClick={() => handleSelection(feature.id)}
-              >
-                <h5 className="mb-2">{feature.title}</h5>
-                <p className="mb-0 text-muted">{feature.subtitle}</p>
-              </button>
-            </div>
+            <button
+              key={feature.id}
+              type="button"
+              className={`ai-feature-tab ${activeFeature === feature.id ? 'active' : ''}`}
+              onClick={() => handleSelection(feature.id)}
+            >
+              <div className="feature-label">{feature.title}</div>
+              <div className="feature-subtitle">{feature.subtitle}</div>
+            </button>
           ))}
         </div>
 
@@ -322,6 +337,54 @@ const AiFeatures = () => {
             </>
           )}
 
+          {activeFeature === 'career' && (
+            <>
+              <div className="mb-3">
+                <label className="form-label">Desired role</label>
+                <input
+                  className="form-control"
+                  name="targetRole"
+                  value={formState.targetRole}
+                  onChange={handleChange}
+                  placeholder="e.g. Senior Product Manager"
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Your experience summary</label>
+                <textarea
+                  className="form-control"
+                  name="experience"
+                  rows="4"
+                  value={formState.experience}
+                  onChange={handleChange}
+                  placeholder="Summarize your work experience and achievements..."
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Key strengths and skills</label>
+                <textarea
+                  className="form-control"
+                  name="skills"
+                  rows="3"
+                  value={formState.skills}
+                  onChange={handleChange}
+                  placeholder="List your strongest skills and tools..."
+                />
+              </div>
+              <div className="mb-3">
+                <label className="form-label">Resume summary or highlights</label>
+                <textarea
+                  className="form-control"
+                  name="resumeText"
+                  rows="3"
+                  value={formState.resumeText}
+                  onChange={handleChange}
+                  placeholder="Paste a short resume highlight or summary..."
+                />
+              </div>
+            </>
+          )}
+
           {activeFeature === 'ats' && (
             <>
               <div className="mb-3">
@@ -378,7 +441,7 @@ const AiFeatures = () => {
         {error && <div className="alert alert-danger">{error}</div>}
 
         {result && (
-          <div className="card bg-light p-3">
+          <div className="card bg-light p-3 ai-result-panel">
             <h5 className="mb-3">Result</h5>
             <pre className="mb-0" style={{ whiteSpace: 'pre-wrap' }}>
               {result}

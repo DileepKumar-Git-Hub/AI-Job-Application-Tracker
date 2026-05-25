@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import ChatBot from './ChatBot'
 
 const PublicView = () => {
   return (
@@ -59,6 +60,42 @@ const PublicView = () => {
             </div>
           </div>
         </div>
+      </section>
+
+      <section className="chat-home-section py-5">
+        <div className="card p-4 shadow-sm">
+          <div className="row gx-4 gy-4 align-items-center">
+            <div className="col-lg-6">
+              <div>
+                <h2>Live Career AI Chat</h2>
+                <p className="text-muted">
+                  Get fast, professional advice for your resume, cover letter, interviews, and job search right from the homepage.
+                </p>
+                <ul className="chat-home-features">
+                  <li>Instant answers to career questions</li>
+                  <li>Resume and ATS improvement suggestions</li>
+                  <li>Interview coaching and behavioral response tips</li>
+                  <li>Job role recommendations tailored to your skills</li>
+                </ul>
+              </div>
+            </div>
+            <div className="col-lg-6">
+              <div className="chat-home-preview">
+                <div className="chat-home-preview-title">Try these quick prompts:</div>
+                <div className="chat-home-preview-grid">
+                  <span>Review my resume for ATS keywords</span>
+                  <span>Write a concise cover letter</span>
+                  <span>Prepare for a behavioral interview</span>
+                  <span>Recommend matching job titles</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-5">
+        <ChatBot />
       </section>
 
       <section className="py-5 text-center">

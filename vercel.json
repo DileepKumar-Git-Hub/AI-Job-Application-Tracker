@@ -1,19 +1,12 @@
 {
   "version": 3,
-  "rootDirectory": "frontend/my-react-app",
   "builds": [
     {
-      "src": "package.json",
+      "src": "frontend/my-react-app/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
       }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
     }
   ]
 }

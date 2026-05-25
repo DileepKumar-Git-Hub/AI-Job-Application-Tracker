@@ -22,9 +22,12 @@ const NavBarPublic = () => {
         <div className="nav-actions">
           {isLoggedIn ? (
             <>
-              <button className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" onClick={handleLogout}>
-                Log Out
-              </button>
+              <NavLink className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" to="/">
+                Home
+              </NavLink>
+              <NavLink className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" to="/jobs">
+                Jobs
+              </NavLink>
               <NavLink className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" to="/dashboard">
                 Dashboard
               </NavLink>
@@ -34,9 +37,10 @@ const NavBarPublic = () => {
               <NavLink className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" to="/ai-features">
                 Use AI
               </NavLink>
-              <NavLink className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" to="/jobs">
-                Jobs
-              </NavLink>
+              
+              <button className="nav-link btn btn-outline-infobtn btn-info d-block mx-auto" onClick={handleLogout}>
+                Log Out
+              </button>
             </>
           ) : (
             <>
