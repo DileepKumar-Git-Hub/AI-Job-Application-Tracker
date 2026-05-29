@@ -105,3 +105,73 @@ npm run dev
 ---
 
 ### 4. Open in Browser
+Frontend → http://localhost:3000
+Backend  → http://localhost:8000
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env` file in the `/backend` directory:
+
+```env
+GEMINI_API_KEY=your_gemini_api_key_here
+DEBUG=True
+SECRET_KEY=your_django_secret_key
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
+
+---
+
+## 📁 Project Structure
+
+AI-Job-Application-Tracker/
+├── backend/
+│   ├── manage.py
+│   ├── requirements.txt
+│   ├── .env.example
+│   ├── jobs/               # Job tracking app
+│   ├── resume/             # Resume analysis app
+│   ├── interview/          # Interview prep app
+│   └── config/             # Django settings
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Route-level pages
+│   │   ├── services/       # API calls
+│   │   └── App.js
+│   └── package.json
+│
+└── README.md
+
+---
+
+## 🌐 Live Demo
+
+🔗 **[Click here to try the live app](https://ai-job-application-trackerwer.vercel.app/)**
+
+> Replace `YOUR_LIVE_DEMO_LINK` with your actual deployed URL (Vercel / Render / Railway etc.)
+
+---
+
+## 🙋‍♂️ Author
+
+**Dileep Kumar**
+
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat&logo=linkedin&logoColor=white)](https://linkedin.com/in/dileep-kumar-dornala)
+[![Gmail](https://img.shields.io/badge/Gmail-D14836?style=flat&logo=gmail&logoColor=white)](mailto:dornaladileepkumar9090909090@gmail.com)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat&logo=github&logoColor=white)](https://github.com/DileepKumar-Git-Hub)
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Made with ❤️ by Dileep Kumar · Hyderabad, India
+</p>
